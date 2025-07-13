@@ -33,7 +33,10 @@ stages:
   - Docker_push
 before_script:
   - echo "Running before script for adservice"
+  - ls -la
   - cd src/adservice/
+  - pwd
+  - ls -la
 
 adservice_build:
   extends: .build_gradle-template
