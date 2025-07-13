@@ -1,0 +1,70 @@
+include:
+  - project: 'spkumar17/gitlab-templates'
+    file: 'BuildTemplate-Gradle.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'TestTemplate-Gradle.yml'
+    ref: 'main'  
+  - project: 'spkumar17/gitlab-templates'
+    file: 'PackageTemplate-Gradle.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Trivy-file-scan-Template.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Trivy-imagescan-Template.yml'
+    ref: 'main'  
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Sonarscanner-template.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Docker-Build-Template.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Docker-Push-Template.yml'
+    ref: 'main'
+
+stages:
+  - build
+  - test
+  - security_stage
+  - Docker_Build
+  - image_security
+  - Docker_push
+before_script:
+  - echo "Running before script for adservice"
+  - cd src/adservice
+
+adservice_build:
+  extends: .build_gradle-template
+  stage: build
+  
+adservice_test:
+  extends: .test_gradle-template
+  stage: test
+
+adservice_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
+
+adservice_sonar_scan:
+  extends: .sonarqube-check-template
+  stage: security_stage
+
+adservice_docker_build:
+  extends: .docker_build_template
+  stage: Docker_Build
+  dependencies:
+    - adservice_build
+
+adservice_trivy_image_scan:
+  extends: .trivy-imagescan
+  stage: image_security
+  dependencies:
+    - adservice_docker_build
+
+adservice_docker_push:
+  extends: .docker_push_template
+  stage: Docker_push
+  dependencies:
+    - adservice_docker_build    
