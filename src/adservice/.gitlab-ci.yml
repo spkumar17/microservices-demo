@@ -40,7 +40,7 @@ adservice_build:
   stage: build
   
 adservice_test:
-  extends: .test_gradle-template
+  extends: .adservice_test
   stage: test
 
 adservice_trivy_file_scan:
