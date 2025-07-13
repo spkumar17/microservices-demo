@@ -1,14 +1,124 @@
-stages:
-  - test
 
-test-runner:
-  image: docker:latest
-  services:
-    - docker:dind
-  variables:
-    DOCKER_DRIVER: overlay2
-  script:
-    - docker info
-    - docker ps
-  stage: test
-  
+trigger_ADservice:
+  stage: trigger_adservice
+  trigger:
+    include:
+      - local: 'src/adservice/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never
+
+
+trigger_cartservice:
+  stage: trigger_cartservice
+  trigger:
+    include:
+      - local: 'src/cartservice/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never      
+
+trigger_checkoutservice:
+  stage: trigger_checkoutservice
+  trigger:
+    include:
+      - local: 'src/checkoutservice/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never      
+
+trigger_emailservice:
+  stage: trigger_emailservice
+  trigger:
+    include:
+      - local: 'src/emailservice/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never
+
+trigger_frontend:
+  stage: trigger_frontend
+  trigger:
+    include:
+      - local: 'src/frontend/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never
+
+
+trigger_loadgenerator:
+  stage: trigger_loadgenerator
+  trigger:
+    include:
+      - local: 'src/loadgenerator/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never
+
+trigger_paymentservice:
+  stage: trigger_paymentservice
+  trigger:
+    include:
+      - local: 'src/paymentservice/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never
+
+trigger_productcatalogservice:
+  stage: trigger_productcatalogservice
+  trigger:
+    include:
+      - local: 'src/productcatalogservice/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never
+
+trigger_recommendationservice:
+  stage: trigger_recommendationservice
+  trigger:
+    include:
+      - local: 'src/recommendationservice/.gitlab-ci.yml'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always  
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never
+
+trigger_shippingservice:
+  stage: trigger_shippingservice
+  trigger:
+    include:
+      - local: 'src/shippingservice/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never
+
+trigger_shoppingassistantservice:
+  stage: trigger_shoppingassistantservice
+  trigger:
+    include:
+      - local: 'src/shoppingassistantservice/.gitlab-ci.yml' 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always
+    - if: '$CI_COMMIT_BRANCH != "main"'
+      when: never                  
+
