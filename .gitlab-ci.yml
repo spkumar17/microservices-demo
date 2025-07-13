@@ -1,4 +1,16 @@
 
+stages:
+  - trigger_adservice
+  - trigger_cartservice
+  - trigger_checkoutservice
+  - trigger_emailservice
+  - trigger_frontend
+  - trigger_loadgenerator
+  - trigger_paymentservice
+  - trigger_productcatalogservice
+  - trigger_recommendationservice
+  - trigger_shippingservice
+  - trigger_shoppingassistantservice
 trigger_ADservice:
   stage: trigger_adservice
   trigger:
