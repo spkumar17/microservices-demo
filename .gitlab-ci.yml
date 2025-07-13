@@ -2,6 +2,13 @@ stages:
   - test
 
 test-runner:
-  stage: test
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
   script:
-    - echo "Hello from GitLab Runner"
+    - docker info
+    - docker ps
+  stage: test
+  
