@@ -37,7 +37,6 @@ before_script:
   - cd src/adservice/
   - pwd
   - ls -la
-  - !reference [.gradle_common_before_script_commands]  
 
 adservice_build:
   extends: .build_gradle-template
