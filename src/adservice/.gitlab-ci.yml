@@ -52,13 +52,13 @@ adservice_test:
 adservice_trivy_file_scan:
   extends: .trivy-filescan
   stage: security_stage
-  script:
-    - trivy fs src/adservice --format html --output src/adservice/trivyfs.html
-  
+
 
 adservice_sonar_scan:
   extends: .sonarqube-check-template
   stage: security_stage
+  dependencies:
+    - adservice_build
 
 adservice_docker_build:
   extends: .docker_build_template
