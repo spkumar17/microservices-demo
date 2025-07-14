@@ -69,6 +69,7 @@ adservice_trivy_image_scan:
   dependencies:
     - adservice_docker_build
 
+
 adservice_docker_push:
   extends: .docker_push_template
   stage: Docker_push
