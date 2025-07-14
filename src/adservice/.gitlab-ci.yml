@@ -31,6 +31,11 @@ stages:
   - Docker_Build
   - image_security
   - Docker_push
+
+variables:
+  GRADLE_Dir: "$CI_PROJECT_DIR/src/adservice/"
+  
+
 before_script:
   - echo "Running before script for adservice"
   - ls -la
