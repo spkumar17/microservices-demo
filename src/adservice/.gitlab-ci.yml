@@ -49,36 +49,50 @@ before_script:
 adservice_build:
   extends: .build_gradle-template
   stage: build
+  tags:
+  - Runner2
   
 # adservice_test:
 #   extends: .adservice_test
 #   stage: test
+    # tags:
+    # - Runner1
 
 # adservice_trivy_file_scan:
 #   extends: .trivy-filescan
 #   stage: security_stage
+#   tags:
+#    - Runner1
 
 # adservice_sonar_scan:
 #   extends: .sonarqube-check-template
 #   stage: security_stage
 #   dependencies:
 #     - adservice_build
+#   tags:
+#     - Runner1
 
 adservice_docker_build:
   extends: .docker_build_template
   stage: Docker_Build
   dependencies:
     - adservice_build
+  tags:
+    - Runner2
 
 adservice_trivy_image_scan:
   extends: .trivy-imagescan
   stage: image_security
   dependencies:
     - adservice_docker_build
+  tags:
+  - Runner2
 
 
 adservice_docker_push:
   extends: .docker_push_template
   stage: Docker_push
   dependencies:
-    - adservice_docker_build    
+    - adservice_docker_build
+  tags:
+    - Runner2      
