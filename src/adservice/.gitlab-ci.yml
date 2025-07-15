@@ -38,6 +38,11 @@ variables:
   GRADLE_Dir: "$CI_PROJECT_DIR/src/adservice/"
   REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "adservice"
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_VERIFY: "0"
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
   
 
 before_script:
