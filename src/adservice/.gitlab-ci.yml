@@ -57,7 +57,6 @@ adservice_build:
 #   extends: .trivy-filescan
 #   stage: security_stage
 
-
 # adservice_sonar_scan:
 #   extends: .sonarqube-check-template
 #   stage: security_stage
