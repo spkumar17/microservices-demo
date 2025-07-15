@@ -50,7 +50,7 @@ adservice_build:
   extends: .build_gradle-template
   stage: build
   tags:
-  - Runner2
+  - Runner1
   
 # adservice_test:
 #   extends: .adservice_test
@@ -86,7 +86,7 @@ adservice_trivy_image_scan:
   dependencies:
     - adservice_docker_build
   tags:
-  - Runner2
+  - Runner1
 
 
 adservice_docker_push:
