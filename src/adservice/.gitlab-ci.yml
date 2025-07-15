@@ -38,6 +38,7 @@ variables:
   GRADLE_Dir: "$CI_PROJECT_DIR/src/adservice/"
   CI_REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "adservice"
+  DOCKER_TLS_CERTDIR: "" 
   
 
 before_script:
