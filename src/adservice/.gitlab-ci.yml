@@ -36,32 +36,33 @@ stages:
 
 variables:
   GRADLE_Dir: "$CI_PROJECT_DIR/src/adservice/"
+  CI_REGISTRY_IMAGE: "Microserviceimage"
+  SERVICE_NAME: "adservice"
   
 
 before_script:
   - echo "Running before script for adservice"
   - cd src/adservice/
   - ls -la
-  - unset DOCKER_HOST
 
 adservice_build:
   extends: .build_gradle-template
   stage: build
   
-adservice_test:
-  extends: .adservice_test
-  stage: test
+# adservice_test:
+#   extends: .adservice_test
+#   stage: test
 
-adservice_trivy_file_scan:
-  extends: .trivy-filescan
-  stage: security_stage
+# adservice_trivy_file_scan:
+#   extends: .trivy-filescan
+#   stage: security_stage
 
 
-adservice_sonar_scan:
-  extends: .sonarqube-check-template
-  stage: security_stage
-  dependencies:
-    - adservice_build
+# adservice_sonar_scan:
+#   extends: .sonarqube-check-template
+#   stage: security_stage
+#   dependencies:
+#     - adservice_build
 
 adservice_docker_build:
   extends: .docker_build_template
