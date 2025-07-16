@@ -78,7 +78,7 @@ adservice_docker_build:
   dependencies:
     - adservice_build
   tags:
-    - Runner2
+    - Runner1
 
 adservice_trivy_image_scan:
   extends: .trivy-imagescan
@@ -95,4 +95,4 @@ adservice_docker_push:
   dependencies:
     - adservice_docker_build
   tags:
-    - Runner2      
+    - Runner1   
