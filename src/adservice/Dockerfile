@@ -51,7 +51,7 @@ LABEL service="adservice" \
 WORKDIR /home/adservice
 USER nonroot
 
-COPY build/libs/app.jar .
+COPY src/adservice/build/libs/*.jar .
 EXPOSE 9555
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
