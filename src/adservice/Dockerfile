@@ -40,10 +40,9 @@
 # EXPOSE 9555
 # ENTRYPOINT ["/app/build/install/hipstershop/bin/AdService"]
 
-
 # adservice Microservice 
 
-FROM gcr.io/distroless/java21-debian11
+FROM  eclipse-temurin:21.0.5_11-jdk@sha256:a20cfa6afdbf57ff2c4de77ae2d0e3725a6349f1936b5ad7c3d1b06f6d1b840a
 
 LABEL service="adservice" \
       maintainer="prasannakumarsinganamalla@gmail.com" \
