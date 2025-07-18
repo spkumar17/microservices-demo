@@ -1,0 +1,94 @@
+include:
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Trivy-file-scan-Template.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Trivy-imagescan-Template.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Sonarscanner-template.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Docker-Build-Template.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'Docker-Push-Template.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'C#-Dotnet-Test-Template.yml'
+    ref: 'main'
+  - project: 'spkumar17/gitlab-templates'
+    file: 'C#-Dotnet-build-Template.yml'
+    ref: 'main'
+
+
+
+stages:
+  - build
+  - test
+  - security_stage
+  - Docker_Build
+  - image_security
+  - Docker_push
+
+variables:
+  REGISTRY_IMAGE: "Microserviceimage"
+  SERVICE_NAME: "cartservice"
+  
+  
+
+before_script:
+  - echo "Running before script for cartservice"
+  - cd src/cartservice/
+  - ls -la
+
+cartservice_build:
+  extends: .dotnet_build_template
+  stage: build
+  # tags:
+  # - Runner1
+  
+cartservice_test:
+  extends: .dotnet_Test_template
+  stage: test
+  # tags:
+  # - Runner1
+
+cartservice_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
+  # tags:
+  #  - Runner1
+
+# cartservice_sonar_scan:
+#   extends: .sonarqube-check-template
+#   stage: security_stage
+#   dependencies:
+#     - cartservice_build
+#   tags:
+#     - Runner1
+
+cartservice_docker_build:
+  extends: .docker_build_template
+  stage: Docker_Build
+  dependencies:
+    - cartservice_build
+  tags:
+    - shellrunner
+
+cartservice_trivy_image_scan:
+  extends: .trivy-imagescan
+  stage: image_security
+  dependencies:
+    - cartservice_docker_build
+  tags:
+  - Runner1
+
+cartservice_docker_push:
+  extends: .docker_push_template
+  stage: Docker_push
+  dependencies:
+    - cartservice_docker_build
+  tags:
+    - shellrunner
+      
