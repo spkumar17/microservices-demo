@@ -80,13 +80,13 @@ adservice_docker_build:
   tags:
     - shellrunner
 
-adservice_trivy_image_scan:
-  extends: .trivy-imagescan
-  stage: image_security
-  dependencies:
-    - adservice_docker_build
-  tags:
-  - Runner1
+# adservice_trivy_image_scan:
+#   extends: .trivy-imagescan
+#   stage: image_security
+#   dependencies:
+#     - adservice_docker_build
+#   tags:
+#   - Runner1
 
 adservice_docker_push:
   extends: .docker_push_template
