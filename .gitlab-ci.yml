@@ -34,6 +34,7 @@ trigger_cartservice:
   trigger:
     include:
       - local: 'src/cartservice/.gitlab-ci.yml' 
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
@@ -46,7 +47,8 @@ trigger_checkoutservice:
   stage: trigger_checkoutservice
   trigger:
     include:
-      - local: 'src/checkoutservice/.gitlab-ci.yml' 
+      - local: 'src/checkoutservice/.gitlab-ci.yml'
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
@@ -60,6 +62,7 @@ trigger_emailservice:
   trigger:
     include:
       - local: 'src/emailservice/.gitlab-ci.yml' 
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
@@ -73,6 +76,7 @@ trigger_frontend:
   trigger:
     include:
       - local: 'src/frontend/.gitlab-ci.yml' 
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
@@ -87,6 +91,7 @@ trigger_loadgenerator:
   trigger:
     include:
       - local: 'src/loadgenerator/.gitlab-ci.yml' 
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
@@ -100,6 +105,7 @@ trigger_paymentservice:
   trigger:
     include:
       - local: 'src/paymentservice/.gitlab-ci.yml' 
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
@@ -113,6 +119,7 @@ trigger_productcatalogservice:
   trigger:
     include:
       - local: 'src/productcatalogservice/.gitlab-ci.yml' 
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
@@ -126,6 +133,7 @@ trigger_recommendationservice:
   trigger:
     include:
       - local: 'src/recommendationservice/.gitlab-ci.yml'
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
@@ -139,6 +147,7 @@ trigger_shippingservice:
   trigger:
     include:
       - local: 'src/shippingservice/.gitlab-ci.yml' 
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
@@ -152,6 +161,7 @@ trigger_shoppingassistantservice:
   trigger:
     include:
       - local: 'src/shoppingassistantservice/.gitlab-ci.yml' 
+    strategy: depend  
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       changes: 
