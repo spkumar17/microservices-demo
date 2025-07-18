@@ -88,7 +88,6 @@ adservice_trivy_image_scan:
   tags:
   - Runner1
 
-
 adservice_docker_push:
   extends: .docker_push_template
   stage: Docker_push
