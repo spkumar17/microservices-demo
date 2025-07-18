@@ -86,7 +86,7 @@ adservice_trivy_image_scan:
   dependencies:
     - adservice_docker_build
   tags:
-  - shellrunner
+  - Runner1
 
 
 adservice_docker_push:
