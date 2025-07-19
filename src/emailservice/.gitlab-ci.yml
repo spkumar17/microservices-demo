@@ -31,6 +31,7 @@ stages:
   - Docker_push
 
 variables:
+  venv_Dir: "$CI_PROJECT_DIR/src/emailservice/"
   REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "emailservice"
   
@@ -46,7 +47,7 @@ emailservice_build:
   # tags:
   #   - Runner1
   
-  
+
 emailservice_test:
   extends: .Test_python_template
   stage: test
