@@ -22,7 +22,6 @@ include:
     ref: 'main'
 
 
-
 stages:
   - build
   - test
