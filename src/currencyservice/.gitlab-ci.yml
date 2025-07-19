@@ -20,7 +20,6 @@ include:
   - project: 'spkumar17/gitlab-templates'
     file: 'Nodejs-test-template.yml'
     ref: 'main'
-      
 
 
 stages:
