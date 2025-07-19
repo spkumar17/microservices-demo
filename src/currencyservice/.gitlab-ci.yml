@@ -31,7 +31,7 @@ stages:
   - Docker_push
 
 variables:
-  venv_Dir: "$CI_PROJECT_DIR/src/currencyservice"
+  # venv_Dir: "$CI_PROJECT_DIR/src/currencyservice"
   REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "currencyservice"
   
