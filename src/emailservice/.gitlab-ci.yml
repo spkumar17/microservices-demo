@@ -69,9 +69,9 @@ emailservice_trivy_file_scan:
 
 # emailservice_docker_build:
 #   extends: .docker_build_template
-#   stage: emailservice_Build
+#   stage: Docker_Build
 #   dependencies:
-#     - frontend_build
+#     - emailservice_build
 #   tags:
 #     - shellrunner
 
@@ -92,4 +92,3 @@ emailservice_trivy_file_scan:
 #     - shellrunner    
       
 
-      
