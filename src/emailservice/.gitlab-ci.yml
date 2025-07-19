@@ -37,7 +37,7 @@ variables:
 
 before_script:
   - echo "Running before script for adservice"
-  - cd src/frontend/
+  - cd src/emailservice/
   - ls -la
 
 emailservice_build:
