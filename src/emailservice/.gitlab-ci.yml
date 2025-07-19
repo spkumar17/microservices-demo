@@ -46,7 +46,6 @@ emailservice_build:
   stage: build
   # tags:
   #   - Runner1
-  
 
 emailservice_test:
   extends: .Test_python_template
