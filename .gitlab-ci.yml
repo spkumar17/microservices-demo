@@ -2,6 +2,7 @@ stages:
   - trigger_adservice
   - trigger_cartservice
   - trigger_checkoutservice
+  - trigger_currencyservice
   - trigger_emailservice
   - trigger_frontend
   - trigger_loadgenerator
