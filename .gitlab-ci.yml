@@ -76,6 +76,21 @@ trigger_frontend:
       when: always
     - when: never
 
+
+trigger_currencyservice:
+  stage: trigger_currencyservice
+  trigger:
+    include:
+      - local: 'src/currencyservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/currencyservice/**/*
+      when: always
+    - when: never
+
+
 trigger_loadgenerator:
   stage: trigger_loadgenerator
   trigger:
