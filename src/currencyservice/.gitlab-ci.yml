@@ -41,13 +41,13 @@ before_script:
   - ls -la
 
 currencyservice_build:
-  extends: .build_python_template
+  extends: .nodejs_build_template
   stage: build
   # tags:
   #   - Runner1
 
 currencyservice_test:
-  extends: .Test_python_template
+  extends: .nodejs_test_template
   stage: test
   # tags:
   #   - Runner1
