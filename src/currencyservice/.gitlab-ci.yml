@@ -36,7 +36,6 @@ variables:
   REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "currencyservice"
   
-
 before_script:
   - echo "Running before script for currencyservice"
   - cd src/currencyservice/
