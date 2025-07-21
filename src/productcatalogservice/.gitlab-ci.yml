@@ -46,46 +46,46 @@ productcatalogservice_build:
   # tags:
   #   - Runner1
   
-productcatalogservice_test:
-  extends: .golang_test_template
-  stage: test
+# productcatalogservice_test:
+#   extends: .golang_test_template
+#   stage: test
+#   # tags:
+#   #   - Runner1
+
+# productcatalogservice_trivy_file_scan:
+#   extends: .trivy-filescan
+#   stage: security_stage
+#   # tags:
+#   #  - Runner1
+
+productcatalogservice_sonar_scan:
+  extends: .sonarqube-check-template
+  stage: security_stage
+  dependencies:
+    - productcatalogservice_build
   # tags:
   #   - Runner1
 
-productcatalogservice_trivy_file_scan:
-  extends: .trivy-filescan
-  stage: security_stage
-  # tags:
-  #  - Runner1
+# # productcatalogservice_docker_build:
+# #   extends: .docker_build_template
+# #   stage: Docker_Build
+# #   dependencies:
+# #     - productcatalogservice_build
+# #   tags:
+# #     - shellrunner
 
-# productcatalogservice_sonar_scan:
-#   extends: .sonarqube-check-template
-#   stage: security_stage
-#   dependencies:
-#     - productcatalogservice_build
-#   tags:
-#     - Runner1
+# # productcatalogservice_trivy_image_scan:
+# #   extends: .trivy-imagescan
+# #   stage: image_security
+# #   dependencies:
+# #     - productcatalogservice_docker_build
+# #   tags:
+# #   - Runner1
 
-# productcatalogservice_docker_build:
-#   extends: .docker_build_template
-#   stage: Docker_Build
-#   dependencies:
-#     - productcatalogservice_build
-#   tags:
-#     - shellrunner
-
-# productcatalogservice_trivy_image_scan:
-#   extends: .trivy-imagescan
-#   stage: image_security
-#   dependencies:
-#     - productcatalogservice_docker_build
-#   tags:
-#   - Runner1
-
-# productcatalogservice_docker_push:
-#   extends: .docker_push_template
-#   stage: Docker_push
-#   dependencies:
-#     - productcatalogservice_docker_build
-#   tags:
-#     - shellrunner      
+# # productcatalogservice_docker_push:
+# #   extends: .docker_push_template
+# #   stage: Docker_push
+# #   dependencies:
+# #     - productcatalogservice_docker_build
+# #   tags:
+# #     - shellrunner      
