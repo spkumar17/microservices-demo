@@ -69,8 +69,8 @@ adservice_sonar_scan:
   stage: security_stage
   dependencies:
     - adservice_build
-  tags:
-    - Runner1
+  # tags:
+  #   - Runner1
 
 adservice_docker_build:
   extends: .docker_build_template

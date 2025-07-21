@@ -66,6 +66,7 @@ frontend_sonar_scan:
   # tags:
   #   - Runner1
 
+
 frontend_docker_build:
   extends: .docker_build_template
   stage: Docker_Build

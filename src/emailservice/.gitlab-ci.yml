@@ -35,7 +35,6 @@ variables:
   REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "emailservice"
   
-
 before_script:
   - echo "Running before script for emailservice"
   - cd src/emailservice/

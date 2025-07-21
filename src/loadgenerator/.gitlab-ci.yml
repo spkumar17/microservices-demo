@@ -27,7 +27,6 @@ include:
     file: 'Python-test-template.yml'
     ref: 'main'  
 
-
 stages:
   - build
   - test

@@ -34,7 +34,6 @@ variables:
   REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "productcatalogservice"
   
-
 before_script:
   - echo "Running before script for adservice"
   - cd src/productcatalogservice/

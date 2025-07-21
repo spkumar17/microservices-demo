@@ -42,7 +42,6 @@ variables:
   REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "recommendationservice"
   
-
 before_script:
   - echo "Running before script for recommendationservice"
   - cd src/recommendationservice/
