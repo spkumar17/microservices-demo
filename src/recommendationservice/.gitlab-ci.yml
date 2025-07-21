@@ -48,11 +48,11 @@ before_script:
   - cd src/recommendationservice/
   - ls -la
 
-# recommendationservice_build:
-#   extends: .build_python_template
-#   stage: build
-#   # tags:
-#   #   - Runner1
+recommendationservice_build:
+  extends: .build_python_template
+  stage: build
+  # tags:
+  #   - Runner1
 
 # recommendationservice_test:
 #   extends: .Test_python_template

@@ -40,11 +40,11 @@ before_script:
   - cd src/frontend/
   - ls -la
 
-# frontend_build:
-#   extends: .golang_build_template
-#   stage: build
-#   # tags:
-#   #   - Runner1
+frontend_build:
+  extends: .golang_build_template
+  stage: build
+  # tags:
+  #   - Runner1
   
 # frontend_test:
 #   extends: .golang_test_template
@@ -63,8 +63,8 @@ frontend_sonar_scan:
   stage: security_stage
   dependencies:
     - frontend_build
-  tags:
-    - Runner1
+  # tags:
+  #   - Runner1
 
 # # frontend_docker_build:
 # #   extends: .docker_build_template
