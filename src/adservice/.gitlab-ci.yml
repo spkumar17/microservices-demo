@@ -46,31 +46,31 @@ before_script:
   - cd src/adservice/
   - ls -la
 
-# adservice_build:
-#   extends: .build_gradle-template
-#   stage: build
-#   # tags:
-#   # - Runner1
-  
-# # adservice_test:
-# #   extends: .adservice_test
-# #   stage: test
-#     # tags:
-#     # - Runner1
-
-# # adservice_trivy_file_scan:
-# #   extends: .trivy-filescan
-# #   stage: security_stage
-# #   tags:
-# #    - Runner1
-
-# adservice_sonar_scan:
-#   extends: .sonarqube-check-template
-#   stage: security_stage
-#   dependencies:
-#     - adservice_build
+adservice_build:
+  extends: .build_gradle-template
+  stage: build
   # tags:
-  #   - Runner1
+  # - Runner1
+  
+adservice_test:
+  extends: .adservice_test
+  stage: test
+    # tags:
+    # - Runner1
+
+adservice_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
+#   tags:
+#    - Runner1
+
+adservice_sonar_scan:
+  extends: .sonarqube-check-template
+  stage: security_stage
+  dependencies:
+    - adservice_build
+  tags:
+    - Runner1
 
 adservice_docker_build:
   extends: .docker_build_template

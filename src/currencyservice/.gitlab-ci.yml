@@ -45,17 +45,17 @@ currencyservice_build:
   # tags:
   #   - Runner1
 
-# currencyservice_test:
-#   extends: .nodejs_test_template
-#   stage: test
-#   # tags:
-#   #   - Runner1
+currencyservice_test:
+  extends: .nodejs_test_template
+  stage: test
+  # tags:
+  #   - Runner1
 
-# currencyservice_trivy_file_scan:
-#   extends: .trivy-filescan
-#   stage: security_stage
-#   # tags:
-#   #  - Runner1
+currencyservice_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
+  # tags:
+  #  - Runner1
 
 currencyservice_sonar_scan:
   extends: .sonarqube-check-template
@@ -65,27 +65,27 @@ currencyservice_sonar_scan:
   # tags:
   #   - Runner1
 
-# # currencyservice_docker_build:
-# #   extends: .docker_build_template
-# #   stage: Docker_Build
-# #   dependencies:
-# #     - currencyservice_build
-# #   tags:
-# #     - shellrunner
+currencyservice_docker_build:
+  extends: .docker_build_template
+  stage: Docker_Build
+  dependencies:
+    - currencyservice_build
+  tags:
+    - shellrunner
 
-# # currencyservice_trivy_image_scan:
-# #   extends: .trivy-imagescan
-# #   stage: image_security
-# #   dependencies:
-# #     - currencyservice_docker_build
-# #   tags:
-# #   - Runner1
+currencyservice_trivy_image_scan:
+  extends: .trivy-imagescan
+  stage: image_security
+  dependencies:
+    - currencyservice_docker_build
+#   tags:
+#   - Runner1
 
-# # currencyservice_docker_push:
-# #   extends: .docker_push_template
-# #   stage: Docker_push
-# #   dependencies:
-# #     - currencyservice_docker_build
-# #   tags:
-# #     - shellrunner    
+currencyservice_docker_push:
+  extends: .docker_push_template
+  stage: Docker_push
+  dependencies:
+    - currencyservice_docker_build
+  tags:
+    - shellrunner    
             
