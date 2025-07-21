@@ -66,6 +66,7 @@ productcatalogservice_sonar_scan:
   # tags:
   #   - Runner1
 
+
 # # productcatalogservice_docker_build:
 # #   extends: .docker_build_template
 # #   stage: Docker_Build
