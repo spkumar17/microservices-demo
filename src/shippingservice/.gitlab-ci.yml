@@ -63,8 +63,8 @@ shippingservice_sonar_scan:
   stage: security_stage
   dependencies:
     - shippingservice_build
-  tags:
-    - Runner1
+  # tags:
+  #   - Runner1
 
 # # shippingservice_docker_build:
 # #   extends: .docker_build_template
