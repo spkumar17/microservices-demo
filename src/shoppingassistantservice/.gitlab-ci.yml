@@ -41,11 +41,11 @@ before_script:
   - cd src/shoppingassistantservice/
   - ls -la
 
-# shoppingassistantservice_build:
-#   extends: .build_python_template
-#   stage: build
-#   # tags:
-#   #   - Runner1
+shoppingassistantservice_build:
+  extends: .build_python_template
+  stage: build
+  # tags:
+  #   - Runner1
 
 # shoppingassistantservice_test:
 #   extends: .Test_python_template
@@ -64,7 +64,7 @@ shoppingassistantservice_sonar_scan:
   stage: security_stage
   dependencies:
     - shoppingassistantservice_build
-  # tags:
+  # # tags:
   #   - Runner1
 
 # # shoppingassistantservice_docker_build:
