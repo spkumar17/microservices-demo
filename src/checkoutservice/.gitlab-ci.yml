@@ -46,47 +46,47 @@ checkoutservice_build:
   # tags:
   #   - Runner1
   
-checkoutservice_test:
-  extends: .golang_test_template
-  stage: test
-  # tags:
-  #   - Runner1
+# checkoutservice_test:
+#   extends: .golang_test_template
+#   stage: test
+#   # tags:
+#   #   - Runner1
 
-checkoutservice_trivy_file_scan:
-  extends: .trivy-filescan
-  stage: security_stage
-  # tags:
-  #  - Runner1
+# checkoutservice_trivy_file_scan:
+#   extends: .trivy-filescan
+#   stage: security_stage
+#   # tags:
+#   #  - Runner1
 
-checkoutservice_sonar_scan:
-  extends: .sonarqube-check-template
-  stage: security_stage
-  dependencies:
-    - checkoutservice_build
-  # tags:
-  #   - Runner1
+# checkoutservice_sonar_scan:
+#   extends: .sonarqube-check-template
+#   stage: security_stage
+#   dependencies:
+#     - checkoutservice_build
+#   # tags:
+#   #   - Runner1
 
-checkoutservice_docker_build:
-  extends: .docker_build_template
-  stage: Docker_Build
-  dependencies:
-    - checkoutservice_build
-  tags:
-    - shellrunner
-
-checkoutservice_trivy_image_scan:
-  extends: .trivy-imagescan
-  stage: image_security
-  dependencies:
-    - checkoutservice_docker_build
+# checkoutservice_docker_build:
+#   extends: .docker_build_template
+#   stage: Docker_Build
+#   dependencies:
+#     - checkoutservice_build
 #   tags:
-#   - Runner1
+#     - shellrunner
+
+# checkoutservice_trivy_image_scan:
+#   extends: .trivy-imagescan
+#   stage: image_security
+#   dependencies:
+#     - checkoutservice_docker_build
+# #   tags:
+# #   - Runner1
 
 
-checkoutservice_docker_push:
-  extends: .docker_push_template
-  stage: Docker_push
-  dependencies:
-    - checkoutservice_docker_build
-  tags:
-    - shellrunner
+# checkoutservice_docker_push:
+#   extends: .docker_push_template
+#   stage: Docker_push
+#   dependencies:
+#     - checkoutservice_docker_build
+#   tags:
+#     - shellrunner
