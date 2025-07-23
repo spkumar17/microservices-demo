@@ -44,7 +44,7 @@ variables:
 before_script:
   - echo "Running before script for adservice"
   - cd src/adservice/
-  - ls -la src
+  - ls -la $CI_PROJECT_DIR
 
 adservice_build:
   extends: .build_gradle-template
