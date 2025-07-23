@@ -32,6 +32,7 @@ stages:
 
 variables:
   REGISTRY_IMAGE: "Microserviceimage"
+  dotnet_Dir: "$CI_PROJECT_DIR/src/cartservice/"
   SERVICE_NAME: "cartservice"
   
   
