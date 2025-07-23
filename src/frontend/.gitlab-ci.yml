@@ -33,6 +33,8 @@ stages:
 variables:
   REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "frontend"
+  golang_Dir: "$CI_PROJECT_DIR/src/frontend/"
+
   
 
 before_script:
