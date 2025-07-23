@@ -52,10 +52,10 @@ WORKDIR /home/adservice
 USER nonroot
 
 # Copy the JAR built in GitLab CI
-COPY src/adservice/build/libs/hipstershop-0.1.0-SNAPSHOT.jar .
+COPY src/adservice/build/libs/* app.jar
 
 # Expose the application's port
 EXPOSE 9555
 
 # Start the application
-ENTRYPOINT ["java", "-jar", "hipstershop-0.1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
