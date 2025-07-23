@@ -33,9 +33,11 @@ stages:
 variables:
   REGISTRY_IMAGE: "Microserviceimage"
   SERVICE_NAME: "shippingservice"
+  golang_Dir: "$CI_PROJECT_DIR/src/shippingservice/"
+
   
 before_script:
-  - echo "Running before script for adservice"
+  - echo "Running before script for shippingservice"
   - cd src/shippingservice/
   - ls -la
 
