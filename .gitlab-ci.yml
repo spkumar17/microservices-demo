@@ -1,171 +1,171 @@
-# stages:
-#   - trigger_adservice
-#   - trigger_cartservice
-#   - trigger_checkoutservice
-#   - trigger_currencyservice
-#   - trigger_emailservice
-#   - trigger_frontend
-#   - trigger_loadgenerator
-#   - trigger_paymentservice
-#   - trigger_productcatalogservice
-#   - trigger_recommendationservice
-#   - trigger_shippingservice
-#   - trigger_shoppingassistantservice
+stages:
+  - trigger_adservice
+  - trigger_cartservice
+  - trigger_checkoutservice
+  - trigger_currencyservice
+  - trigger_emailservice
+  - trigger_frontend
+  - trigger_loadgenerator
+  - trigger_paymentservice
+  - trigger_productcatalogservice
+  - trigger_recommendationservice
+  - trigger_shippingservice
+  - trigger_shoppingassistantservice
 
-# trigger_adservice:
-#   stage: trigger_adservice
-#   trigger:
-#     include:
-#       - local: 'src/adservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/adservice/**/*
-#       when: always
-#     - when: never
+trigger_adservice:
+  stage: trigger_adservice
+  trigger:
+    include:
+      - local: 'src/adservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/adservice/**/*
+      when: always
+    - when: never
 
-# trigger_cartservice:
-#   stage: trigger_cartservice
-#   trigger:
-#     include:
-#       - local: 'src/cartservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/cartservice/**/*
-#       when: always
-#     - when: never
+trigger_cartservice:
+  stage: trigger_cartservice
+  trigger:
+    include:
+      - local: 'src/cartservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/cartservice/**/*
+      when: always
+    - when: never
 
-# trigger_checkoutservice:
-#   stage: trigger_checkoutservice
-#   trigger:
-#     include:
-#       - local: 'src/checkoutservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/checkoutservice/**/*
-#       when: always
-#     - when: never
+trigger_checkoutservice:
+  stage: trigger_checkoutservice
+  trigger:
+    include:
+      - local: 'src/checkoutservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/checkoutservice/**/*
+      when: always
+    - when: never
 
-# trigger_emailservice:
-#   stage: trigger_emailservice
-#   trigger:
-#     include:
-#       - local: 'src/emailservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/emailservice/**/*
-#       when: always
-#     - when: never
+trigger_emailservice:
+  stage: trigger_emailservice
+  trigger:
+    include:
+      - local: 'src/emailservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/emailservice/**/*
+      when: always
+    - when: never
 
-# trigger_frontend:
-#   stage: trigger_frontend
-#   trigger:
-#     include:
-#       - local: 'src/frontend/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/frontend/**/*
-#       when: always
-#     - when: never
-
-
-# trigger_currencyservice:
-#   stage: trigger_currencyservice
-#   trigger:
-#     include:
-#       - local: 'src/currencyservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/currencyservice/**/*
-#       when: always
-#     - when: never
+trigger_frontend:
+  stage: trigger_frontend
+  trigger:
+    include:
+      - local: 'src/frontend/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/frontend/**/*
+      when: always
+    - when: never
 
 
-# trigger_loadgenerator:
-#   stage: trigger_loadgenerator
-#   trigger:
-#     include:
-#       - local: 'src/loadgenerator/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/loadgenerator/**/*
-#       when: always
-#     - when: never
+trigger_currencyservice:
+  stage: trigger_currencyservice
+  trigger:
+    include:
+      - local: 'src/currencyservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/currencyservice/**/*
+      when: always
+    - when: never
 
-# trigger_paymentservice:
-#   stage: trigger_paymentservice
-#   trigger:
-#     include:
-#       - local: 'src/paymentservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/paymentservice/**/*
-#       when: always
-#     - when: never
 
-# trigger_productcatalogservice:
-#   stage: trigger_productcatalogservice
-#   trigger:
-#     include:
-#       - local: 'src/productcatalogservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/productcatalogservice/**/*
-#       when: always
-#     - when: never
+trigger_loadgenerator:
+  stage: trigger_loadgenerator
+  trigger:
+    include:
+      - local: 'src/loadgenerator/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/loadgenerator/**/*
+      when: always
+    - when: never
 
-# trigger_recommendationservice:
-#   stage: trigger_recommendationservice
-#   trigger:
-#     include:
-#       - local: 'src/recommendationservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/recommendationservice/**/*
-#       when: always
-#     - when: never
+trigger_paymentservice:
+  stage: trigger_paymentservice
+  trigger:
+    include:
+      - local: 'src/paymentservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/paymentservice/**/*
+      when: always
+    - when: never
 
-# trigger_shippingservice:
-#   stage: trigger_shippingservice
-#   trigger:
-#     include:
-#       - local: 'src/shippingservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/shippingservice/**/*
-#       when: always
-#     - when: never
+trigger_productcatalogservice:
+  stage: trigger_productcatalogservice
+  trigger:
+    include:
+      - local: 'src/productcatalogservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/productcatalogservice/**/*
+      when: always
+    - when: never
 
-# trigger_shoppingassistantservice:
-#   stage: trigger_shoppingassistantservice
-#   trigger:
-#     include:
-#       - local: 'src/shoppingassistantservice/.gitlab-ci.yml'
-#     strategy: depend
-#   rules:
-#     - if: '$CI_COMMIT_BRANCH == "main"'
-#       changes:
-#         - src/shoppingassistantservice/**/*
-#       when: always
-#     - when: never
+trigger_recommendationservice:
+  stage: trigger_recommendationservice
+  trigger:
+    include:
+      - local: 'src/recommendationservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/recommendationservice/**/*
+      when: always
+    - when: never
+
+trigger_shippingservice:
+  stage: trigger_shippingservice
+  trigger:
+    include:
+      - local: 'src/shippingservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/shippingservice/**/*
+      when: always
+    - when: never
+
+trigger_shoppingassistantservice:
+  stage: trigger_shoppingassistantservice
+  trigger:
+    include:
+      - local: 'src/shoppingassistantservice/.gitlab-ci.yml'
+    strategy: depend
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      changes:
+        - src/shoppingassistantservice/**/*
+      when: always
+    - when: never
