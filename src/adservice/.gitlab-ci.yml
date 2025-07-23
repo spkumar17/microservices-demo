@@ -72,11 +72,21 @@ adservice_build:
 #   # tags:
 #   #   - Runner1
 
+check_jar_exists:
+  stage: test
+  image: alpine:latest
+  dependencies:
+    - adservice_build
+  script:
+    - echo "Checking for JAR file:"
+    - ls -l build/libs/hipstershop-0.1.0-SNAPSHOT.jar
+
+
 adservice_docker_build:
   extends: .docker_build_template
   stage: Docker_Build
-  # dependencies:
-  #   - adservice_build
+  dependencies:
+    - adservice_build
   tags:
     - shellrunner
 
