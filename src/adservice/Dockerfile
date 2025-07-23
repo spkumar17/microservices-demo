@@ -52,7 +52,7 @@ WORKDIR /home/adservice
 USER nonroot
 
 # Copy the JAR built in GitLab CI
-COPY src/adservice/build/libs/* app.jar
+COPY adservice_build/src/adservice/build/libs/* app.jar
 
 # Expose the application's port
 EXPOSE 9555
