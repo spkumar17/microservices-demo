@@ -71,15 +71,15 @@ adservice_build:
 #   # tags:
 #   #   - Runner1
 
-check_jar_exists:
-  stage: test
-  image: alpine:latest
-  dependencies:
-    - adservice_build
-  script:
-    - echo "Checking for file:"
-    - ls 
-    - ls build/install/hipstershop/bin/
+# check_jar_exists:
+#   stage: test
+#   image: alpine:latest
+#   dependencies:
+#     - adservice_build
+#   script:
+#     - echo "Checking for file:"
+#     - ls 
+#     - ls build/install/hipstershop/bin/
 
 
 adservice_docker_build:

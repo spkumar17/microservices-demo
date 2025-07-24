@@ -50,8 +50,8 @@ LABEL service="adservice" \
 WORKDIR /home/adservice
 
 # Copy the JAR from the local build output to the image
-COPY  /build/install/hipstershop .
+COPY  build/install/hipstershop/bin/AdService .
 
 EXPOSE 9555
 
-ENTRYPOINT ["/app/build/install/hipstershop/bin/AdService"]
+ENTRYPOINT ["/home/adservice/build/install/hipstershop/bin/AdService"]
