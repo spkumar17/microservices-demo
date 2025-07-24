@@ -79,7 +79,7 @@ check_jar_exists:
     - adservice_build
   script:
     - echo "Checking for file:"
-    - ls -l /build/install/hipstershop
+    - ls -l /build/install/
 
 
 adservice_docker_build:
