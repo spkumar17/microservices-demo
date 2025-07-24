@@ -78,8 +78,8 @@ check_jar_exists:
   dependencies:
     - adservice_build
   script:
-    - echo "Checking for JAR file:"
-    - ls -l build/libs/hipstershop-0.1.0-SNAPSHOT.jar
+    - echo "Checking for file:"
+    - ls -l /build/install/hipstershop
 
 
 adservice_docker_build:
