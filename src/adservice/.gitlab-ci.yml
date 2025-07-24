@@ -79,7 +79,7 @@ check_jar_exists:
   script:
     - echo "Checking for file:"
     - ls 
-    - ls build/
+    - ls build/install
 
 
 adservice_docker_build:
