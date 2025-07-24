@@ -47,15 +47,12 @@ LABEL service="adservice" \
       maintainer="prasannakumarsinganamalla@gmail.com" \
       description="AdService microservice container"
 
-# Set working directory
 WORKDIR /home/adservice
 USER nonroot
 
-# Copy the JAR built in GitLab CI
-COPY src/adservice/build/libs/* app.jar
+# Copy the JAR from the local build output to the image
+COPY build/libs/hipstershop-0.1.0-SNAPSHOT.jar .
 
-# Expose the application's port
 EXPOSE 9555
 
-# Start the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "hipstershop-0.1.0-SNAPSHOT.jar"]
