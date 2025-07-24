@@ -48,7 +48,6 @@ LABEL service="adservice" \
       description="AdService microservice container"
 
 WORKDIR /home/adservice
-USER nonroot
 
 # Copy the JAR from the local build output to the image
 COPY build/libs/hipstershop-0.1.0-SNAPSHOT.jar .
