@@ -54,4 +54,4 @@ COPY  build/install/hipstershop/bin/AdService .
 
 EXPOSE 9555
 
-ENTRYPOINT ["/home/adservice/build/install/hipstershop/bin/AdService"]
+ENTRYPOINT ["build/install/hipstershop/bin/AdService"]
