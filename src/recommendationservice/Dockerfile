@@ -12,37 +12,61 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM python:3.12.8-alpine@sha256:54bec49592c8455de8d5983d984efff76b6417a6af9b5dcc8d0237bf6ad3bd20 AS base
+# FROM python:3.12.8-alpine@sha256:54bec49592c8455de8d5983d984efff76b6417a6af9b5dcc8d0237bf6ad3bd20 AS base
 
-FROM base AS builder
+# FROM base AS builder
 
-RUN apk update \
-    && apk add --no-cache g++ linux-headers \
-    && rm -rf /var/cache/apk/*
+# RUN apk update \
+#     && apk add --no-cache g++ linux-headers \
+#     && rm -rf /var/cache/apk/*
 
-# get packages
+# # get packages
+# COPY requirements.txt .
+# RUN pip install -r requirements.txt
+
+# FROM base
+# # Enable unbuffered logging
+# ENV PYTHONUNBUFFERED=1
+
+# RUN apk update \
+#     && apk add --no-cache libstdc++ \
+#     && rm -rf /var/cache/apk/*
+
+# # get packages
+# WORKDIR /recommendationservice
+
+# # Grab packages from builder
+# COPY --from=builder /usr/local/lib/python3.12/ /usr/local/lib/python3.12/
+
+# # Add the application
+# COPY . .
+
+# # set listen port
+# ENV PORT "8080"
+# EXPOSE 8080
+
+# ENTRYPOINT ["python", "recommendation_server.py"]
+
+
+
+FROM python:3.11-alpine
+
+LABEL service="recommendationservice"
+
+WORKDIR /app
+
+# Install build dependencies (if needed for compiled packages)
+RUN apk add --no-cache build-base linux-headers
+
+# Copy dependency list first (for Docker cache efficiency)
 COPY requirements.txt .
-RUN pip install -r requirements.txt
 
-FROM base
-# Enable unbuffered logging
-ENV PYTHONUNBUFFERED=1
+# Install dependencies inside the image
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN apk update \
-    && apk add --no-cache libstdc++ \
-    && rm -rf /var/cache/apk/*
+# Now copy the application source code
+COPY src/recommendationservice/ .
 
-# get packages
-WORKDIR /recommendationservice
-
-# Grab packages from builder
-COPY --from=builder /usr/local/lib/python3.12/ /usr/local/lib/python3.12/
-
-# Add the application
-COPY . .
-
-# set listen port
-ENV PORT "8080"
 EXPOSE 8080
 
 ENTRYPOINT ["python", "recommendation_server.py"]
