@@ -45,11 +45,14 @@ FROM node:20.18.1-alpine
 
 WORKDIR /app
 
+RUN apk add --update --no-cache python3 make g++
+
 # Copy only dependency manifests first
 COPY package*.json ./
 
 # Install only production dependencies
-RUN npm install --only=production
+RUN npm ci --omit=dev
+
 
 # Then copy the rest of the app code
 COPY . .
