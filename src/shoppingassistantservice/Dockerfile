@@ -52,7 +52,7 @@ WORKDIR /app
 
 RUN apk add --no-cache build-base linux-headers
 
-COPY src/shoppingassistantservice/requirements.txt .
+COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
