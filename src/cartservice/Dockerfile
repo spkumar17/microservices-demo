@@ -41,16 +41,16 @@
 # ENTRYPOINT ["/app/cartservice"]
 
 
+#----------------------------------------------
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
 
 WORKDIR /app
-
 EXPOSE 7070
 ENV ASPNETCORE_HTTP_PORTS=7070
 
 # Copy the output from build stage (assuming this includes the published binary)
-COPY cartservice_build .
+COPY cartservice_build cartservice
 
 # Run the app using the binary name
-ENTRYPOINT ["/app/cartservice"]
+ENTRYPOINT ["./cartservice"]
