@@ -67,6 +67,6 @@ COPY --from=builder /app /app
 
 
 EXPOSE 50051
+ENTRYPOINT ["index.js"]
 
-ENTRYPOINT [ "node", "index.js" ]
 # Run the app
