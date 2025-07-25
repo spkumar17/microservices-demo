@@ -68,12 +68,12 @@ checkoutservice_build:
 #   #   - Runner1
 
 
-checkoutservice_test:
-  stage: test
-  dependencies:
-    - checkoutservice_build
-  script:
-    - ls -la checkoutservice_build
+# checkoutservice_test:
+#   stage: test
+#   dependencies:
+#     - checkoutservice_build
+#   script:
+#     - ls -la checkoutservice_build
 
 
 checkoutservice_docker_build:

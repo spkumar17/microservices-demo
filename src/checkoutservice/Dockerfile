@@ -46,7 +46,7 @@ FROM golang:1.23.4-alpine
 # Set the working directory inside the container.
 WORKDIR /app
 
-COPY checkoutservice_build checkoutservice
+COPY checkoutservice_build/checkoutservice_build ./checkoutservice
 
 RUN chmod +x ./checkoutservice
 
