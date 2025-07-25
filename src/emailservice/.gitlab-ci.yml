@@ -65,13 +65,13 @@ emailservice_build:
 #   # tags:
 #   #   - Runner1
 
-# emailservice_docker_build:
-#   extends: .docker_build_template
-#   stage: Docker_Build
-#   dependencies:
-#     - emailservice_build
-#   tags:
-#     - shellrunner
+emailservice_docker_build:
+  extends: .docker_build_template
+  stage: Docker_Build
+  dependencies:
+    - emailservice_build
+  tags:
+    - shellrunner
 
 # emailservice_trivy_image_scan:
 #   extends: .trivy-imagescan
@@ -81,12 +81,12 @@ emailservice_build:
 #   # tags:
 #   # - Runner1
 
-# emailservice_docker_push:
-#   extends: .docker_push_template
-#   stage: Docker_push
-#   dependencies:
-#     - emailservice_docker_build
-#   tags:
-#     - shellrunner    
+emailservice_docker_push:
+  extends: .docker_push_template
+  stage: Docker_push
+  dependencies:
+    - emailservice_docker_build
+  tags:
+    - shellrunner    
       
 
