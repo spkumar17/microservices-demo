@@ -170,7 +170,8 @@ proto-plus==1.26.1
     #   google-api-core
     #   google-cloud-alloydb
     #   google-cloud-secret-manager
-protobuf==3.20.*
+protobuf>=6.30.0,<7.0.0
+google-cloud-secret-manager>=2.21.0
     # via
     #   google-ai-generativelanguage
     #   google-api-core
