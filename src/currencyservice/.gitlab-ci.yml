@@ -66,13 +66,13 @@ currencyservice_build:
 #   # tags:
 #   #   - Runner1
 
-currencyservice_artiafact:
-  stage:
-    - test
+currencyservice_artifact:
+  stage: test
   script:
-    - ls -a ./node_modules
+    - ls -la ./node_modules
   dependencies:
     - currencyservice_build
+
 currencyservice_docker_build:
   extends: .docker_build_template
   stage: Docker_Build
