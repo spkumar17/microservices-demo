@@ -52,5 +52,7 @@ ENV ASPNETCORE_HTTP_PORTS=7070
 # Copy the output from build stage (assuming this includes the published binary)
 COPY cartservice_build cartservice
 
+RUN chmod +x ./cartservice
+
 # Run the app using the binary name
 ENTRYPOINT ["./cartservice"]
