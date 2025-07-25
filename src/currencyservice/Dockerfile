@@ -41,32 +41,21 @@
 
 # ENTRYPOINT [ "node", "server.js" ]
 
-# Stage 1: Build and install production dependencies
-FROM node:20.18.1-alpine AS builder
+FROM node:20.18.1-alpine
 
 WORKDIR /app
 
-# Install required build tools
-RUN apk add --no-cache python3 make g++
+RUN apk add --update --no-cache python3 make g++
 
+# Copy only dependency manifests first
 COPY package*.json ./
 
 # Install only production dependencies
 RUN npm ci --omit=dev
 
+
+# Then copy the rest of the app code
 COPY . .
 
-# Stage 2: Create final lightweight image
-FROM gcr.io/distroless/nodejs20-debian12
-
-WORKDIR /app
-
-# Copy only the built app and node_modules from builder
-COPY --from=builder /app /app
-
-EXPOSE 7000 
-# pass this as env as this was not explicitly set on server.js file  ----const PORT = process.env.PORT;
-
-ENTRYPOINT [ "server.js" ]
-
-# Run the app
+EXPOSE 7000
+ENTRYPOINT ["node", "server.js"]
