@@ -50,7 +50,7 @@ EXPOSE 7070
 ENV ASPNETCORE_HTTP_PORTS=7070
 
 # Copy the output from build stage (assuming this includes the published binary)
-COPY cartservice_build cartservice
+COPY cartservice_build/cartservice cartservice
 
 RUN chmod +x ./cartservice
 
