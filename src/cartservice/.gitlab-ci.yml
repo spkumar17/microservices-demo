@@ -68,6 +68,14 @@ cartservice_build:
 #   # tags:
 #   #   - Runner1
 
+cartservice_test:
+  stage: test
+  dependencies:
+    - cartservice_build
+  script:
+    - ls -la cartservice_build
+
+
 cartservice_docker_build:
   extends: .docker_build_template
   stage: Docker_Build
