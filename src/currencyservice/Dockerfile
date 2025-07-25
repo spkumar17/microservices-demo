@@ -64,5 +64,9 @@ WORKDIR /app
 # Copy only the built app and node_modules from builder
 COPY --from=builder /app /app
 
+EXPOSE 7000 
+# pass this as env as this was not explicitly set on server.js file  ----const PORT = process.env.PORT;
+
+ENTRYPOINT [ "server.js" ]
+
 # Run the app
-ENTRYPOINT ["server.js"]
