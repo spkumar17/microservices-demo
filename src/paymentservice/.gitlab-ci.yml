@@ -65,13 +65,13 @@ paymentservice_build:
 #   # tags:
 #   #   - Runner1
 
-# paymentservice_docker_build:
-#   extends: .docker_build_template
-#   stage: Docker_Build
-#   dependencies:
-#     - paymentservice_build
-#   tags:
-#     - shellrunner
+paymentservice_docker_build:
+  extends: .docker_build_template
+  stage: Docker_Build
+  dependencies:
+    - paymentservice_build
+  tags:
+    - shellrunner
 
 # paymentservice_trivy_image_scan:
 #   extends: .trivy-imagescan
@@ -81,11 +81,11 @@ paymentservice_build:
 #   # tags:
 #   # - Runner1
 
-# paymentservice_docker_push:
-#   extends: .docker_push_template
-#   stage: Docker_push
-#   dependencies:
-#     - paymentservice_docker_build
-#   tags:
-#     - shellrunner    
+paymentservice_docker_push:
+  extends: .docker_push_template
+  stage: Docker_push
+  dependencies:
+    - paymentservice_docker_build
+  tags:
+    - shellrunner    
             
