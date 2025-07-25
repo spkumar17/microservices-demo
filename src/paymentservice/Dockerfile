@@ -65,6 +65,6 @@ WORKDIR /app
 COPY --from=builder /app /app
 
 EXPOSE 50051
-ENTRYPOINT [ "node", "index.js" ]
+ENTRYPOINT [ "index.js" ]
 
 # Run the app
