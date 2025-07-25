@@ -41,17 +41,18 @@
 
 # ENTRYPOINT [ "node", "server.js" ]
 
-
 FROM node:20.18.1-alpine
 
 WORKDIR /app
 
-# Copy pre-installed node_modules from artifact
-COPY ./node_modules ./node_modules
+# Copy only dependency manifests first
+COPY package*.json ./
 
-# Copy the rest of your app code
+# Install only production dependencies
+RUN npm ci --only=production
+
+# Then copy the rest of the app code
 COPY . .
 
 EXPOSE 7000
-
 ENTRYPOINT ["node", "server.js"]
