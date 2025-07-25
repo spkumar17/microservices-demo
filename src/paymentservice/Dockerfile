@@ -64,9 +64,7 @@ WORKDIR /app
 # Copy only the built app and node_modules from builder
 COPY --from=builder /app /app
 
-
-
 EXPOSE 50051
-ENTRYPOINT ["index.js"]
+ENTRYPOINT [ "node", "index.js" ]
 
 # Run the app
