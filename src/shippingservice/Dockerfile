@@ -12,30 +12,52 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.23.4-alpine@sha256:c23339199a08b0e12032856908589a6d41a0dab141b8b3b21f156fc571a3f1d3 AS builder
-ARG TARGETOS
-ARG TARGETARCH
-WORKDIR /src
+# FROM golang:1.23.4-alpine@sha256:c23339199a08b0e12032856908589a6d41a0dab141b8b3b21f156fc571a3f1d3 AS builder
+# ARG TARGETOS
+# ARG TARGETARCH
+# WORKDIR /src
 
-# restore dependencies
-COPY go.mod go.sum ./
-RUN go mod download
-COPY . .
+# # restore dependencies
+# COPY go.mod go.sum ./
+# RUN go mod download
+# COPY . .
 
-# Skaffold passes in debug-oriented compiler flags
-ARG SKAFFOLD_GO_GCFLAGS
-RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} CGO_ENABLED=0 go build -gcflags="${SKAFFOLD_GO_GCFLAGS}" -o /go/bin/shippingservice .
+# # Skaffold passes in debug-oriented compiler flags
+# ARG SKAFFOLD_GO_GCFLAGS
+# RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} CGO_ENABLED=0 go build -gcflags="${SKAFFOLD_GO_GCFLAGS}" -o /go/bin/shippingservice .
 
-FROM scratch
+# FROM scratch
 
-WORKDIR /src
-COPY --from=builder /go/bin/shippingservice /src/shippingservice
+# WORKDIR /src
+# COPY --from=builder /go/bin/shippingservice /src/shippingservice
+# ENV APP_PORT=50051
+
+# # Definition of this variable is used by 'skaffold debug' to identify a golang binary.
+# # Default behavior - a failure prints a stack trace for the current goroutine.
+# # See https://golang.org/pkg/runtime/
+# ENV GOTRACEBACK=single
+
+# EXPOSE 50051
+# ENTRYPOINT ["/src/shippingservice"]
+
+
+FROM golang:1.23.4-alpine
+
+# Set the working directory inside the container.
+WORKDIR /app
+
+# The executable is named 'shippingservice' and will be placed at /app/shippingservice in the final image.
+COPY shippingservice_build  shippingservice
+
+RUN chmod +x ./shippingservice
+# Set an environment variable for the application's port.
 ENV APP_PORT=50051
 
-# Definition of this variable is used by 'skaffold debug' to identify a golang binary.
-# Default behavior - a failure prints a stack trace for the current goroutine.
-# See https://golang.org/pkg/runtime/
+# Set a Go runtime environment variable for stack traces on panic.
 ENV GOTRACEBACK=single
 
+# Expose the port your application listens on.
 EXPOSE 50051
-ENTRYPOINT ["/src/shippingservice"]
+
+# Define the command to run when the container starts.
+ENTRYPOINT ["./shippingservice"]

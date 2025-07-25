@@ -67,13 +67,13 @@ shippingservice_build:
 #   # tags:
 #   #   - Runner1
 
-# shippingservice_docker_build:
-#   extends: .docker_build_template
-#   stage: Docker_Build
-#   dependencies:
-#     - shippingservice_build
-#   tags:
-#     - shellrunner
+shippingservice_docker_build:
+  extends: .docker_build_template
+  stage: Docker_Build
+  dependencies:
+    - shippingservice_build
+  tags:
+    - shellrunner
 
 # shippingservice_trivy_image_scan:
 #   extends: .trivy-imagescan
@@ -83,10 +83,10 @@ shippingservice_build:
 #   # tags:
 #   # - Runner1
 
-# shippingservice_docker_push:
-#   extends: .docker_push_template
-#   stage: Docker_push
-#   dependencies:
-#     - shippingservice_docker_build
-#   tags:
-#     - shellrunner
+shippingservice_docker_push:
+  extends: .docker_push_template
+  stage: Docker_push
+  dependencies:
+    - shippingservice_docker_build
+  tags:
+    - shellrunner
