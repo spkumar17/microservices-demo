@@ -66,13 +66,13 @@ shoppingassistantservice_build:
 #   # # tags:
 #   #   - Runner1
 
-# shoppingassistantservice_docker_build:
-#   extends: .docker_build_template
-#   stage: Docker_Build
-#   dependencies:
-#     - shoppingassistantservice_build
-#   tags:
-#     - shellrunner
+shoppingassistantservice_docker_build:
+  extends: .docker_build_template
+  stage: Docker_Build
+  dependencies:
+    - shoppingassistantservice_build
+  tags:
+    - shellrunner
 
 # shoppingassistantservice_trivy_image_scan:
 #   extends: .trivy-imagescan
@@ -82,11 +82,11 @@ shoppingassistantservice_build:
 #   # tags:
 #   # - Runner1
 
-# shoppingassistantservice_docker_push:
-#   extends: .docker_push_template
-#   stage: Docker_push
-#   dependencies:
-#     - shoppingassistantservice_docker_build
-#   tags:
-#     - shellrunner    
+shoppingassistantservice_docker_push:
+  extends: .docker_push_template
+  stage: Docker_push
+  dependencies:
+    - shoppingassistantservice_docker_build
+  tags:
+    - shellrunner    
       
