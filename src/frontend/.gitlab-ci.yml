@@ -69,13 +69,13 @@ frontend_build:
 #   #   - Runner1
 
 
-# frontend_docker_build:
-#   extends: .docker_build_template
-#   stage: Docker_Build
-#   dependencies:
-#     - frontend_build
-#   tags:
-#     - shellrunner
+frontend_docker_build:
+  extends: .docker_build_template
+  stage: Docker_Build
+  dependencies:
+    - frontend_build
+  tags:
+    - shellrunner
 
 # frontend_trivy_image_scan:
 #   extends: .trivy-imagescan
@@ -85,10 +85,10 @@ frontend_build:
 #   # tags:
 #   # - Runner1
 
-# frontend_docker_push:
-#   extends: .docker_push_template
-#   stage: Docker_push
-#   dependencies:
-#     - frontend_docker_build
-#   tags:
-#     - shellrunner
+frontend_docker_push:
+  extends: .docker_push_template
+  stage: Docker_push
+  dependencies:
+    - frontend_docker_build
+  tags:
+    - shellrunner
