@@ -67,13 +67,22 @@ checkoutservice_build:
 #   # tags:
 #   #   - Runner1
 
-# checkoutservice_docker_build:
-#   extends: .docker_build_template
-#   stage: Docker_Build
-#   dependencies:
-#     - checkoutservice_build
-#   tags:
-#     - shellrunner
+
+checkoutservice_test:
+  stage: test
+  dependencies:
+    - checkoutservice_build
+  script:
+    - ls -la checkoutservice_build
+
+
+checkoutservice_docker_build:
+  extends: .docker_build_template
+  stage: Docker_Build
+  dependencies:
+    - checkoutservice_build
+  tags:
+    - shellrunner
 
 # checkoutservice_trivy_image_scan:
 #   extends: .trivy-imagescan
@@ -84,10 +93,10 @@ checkoutservice_build:
 # #   - Runner1
 
 
-# checkoutservice_docker_push:
-#   extends: .docker_push_template
-#   stage: Docker_push
-#   dependencies:
-#     - checkoutservice_docker_build
-#   tags:
-#     - shellrunner
+checkoutservice_docker_push:
+  extends: .docker_push_template
+  stage: Docker_push
+  dependencies:
+    - checkoutservice_docker_build
+  tags:
+    - shellrunner
