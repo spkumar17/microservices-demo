@@ -51,15 +51,15 @@ adservice_build:
   # tags:
   # - Runner1
   
-# adservice_test:
-#   extends: .adservice_test
-#   stage: test
+adservice_test:
+  extends: .adservice_test
+  stage: test
 # #     # tags:
 # #     # - Runner1
 
-# adservice_trivy_file_scan:
-#   extends: .trivy-filescan
-#   stage: security_stage
+adservice_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
 # #   tags:
 # #    - Runner1
 

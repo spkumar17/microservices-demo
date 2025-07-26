@@ -46,23 +46,23 @@ currencyservice_build:
   # tags:
   #   - Runner1
 
-# currencyservice_test:
-#   extends: .nodejs_test_template
-#   stage: test
+currencyservice_test:
+  extends: .nodejs_test_template
+  stage: test
 #   # tags:
 #   #   - Runner1
 
-# currencyservice_trivy_file_scan:
-#   extends: .trivy-filescan
-#   stage: security_stage
+currencyservice_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
 #   # tags:
 #   #  - Runner1
 
-# currencyservice_sonar_scan:
-#   extends: .sonarqube-check-template
-#   stage: security_stage
-#   dependencies:
-#     - currencyservice_build
+currencyservice_sonar_scan:
+  extends: .sonarqube-check-template
+  stage: security_stage
+  dependencies:
+    - currencyservice_build
 #   # tags:
 #   #   - Runner1
 
@@ -81,11 +81,11 @@ currencyservice_docker_build:
   tags:
     - shellrunner
 
-# currencyservice_trivy_image_scan:
-#   extends: .trivy-imagescan
-#   stage: image_security
-#   dependencies:
-#     - currencyservice_docker_build
+currencyservice_trivy_image_scan:
+  extends: .trivy-imagescan
+  stage: image_security
+  dependencies:
+    - currencyservice_docker_build
 # #   tags:
 # #   - Runner1
 

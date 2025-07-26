@@ -45,23 +45,23 @@ emailservice_build:
   # tags:
   #   - Runner
 
-# emailservice_test:
-#   extends: .Test_python_template
-#   stage: test
+emailservice_test:
+  extends: .Test_python_template
+  stage: test
 #   # tags:
 #   #   - Runner1
 
-# emailservice_trivy_file_scan:
-#   extends: .trivy-filescan
-#   stage: security_stage
+emailservice_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
 #   # tags:
 #   #  - Runner1
 
-# emailservice_sonar_scan:
-#   extends: .sonarqube-check-template
-#   stage: security_stage
-#   dependencies:
-#     - emailservice_build
+emailservice_sonar_scan:
+  extends: .sonarqube-check-template
+  stage: security_stage
+  dependencies:
+    - emailservice_build
 #   # tags:
 #   #   - Runner1
 
@@ -73,11 +73,11 @@ emailservice_docker_build:
   tags:
     - shellrunner
 
-# emailservice_trivy_image_scan:
-#   extends: .trivy-imagescan
-#   stage: image_security
-#   dependencies:
-#     - emailservice_docker_build
+emailservice_trivy_image_scan:
+  extends: .trivy-imagescan
+  stage: image_security
+  dependencies:
+    - emailservice_docker_build
 #   # tags:
 #   # - Runner1
 

@@ -73,11 +73,11 @@ paymentservice_docker_build:
   tags:
     - shellrunner
 
-# paymentservice_trivy_image_scan:
-#   extends: .trivy-imagescan
-#   stage: image_security
-#   dependencies:
-#     - paymentservice_docker_build
+paymentservice_trivy_image_scan:
+  extends: .trivy-imagescan
+  stage: image_security
+  dependencies:
+    - paymentservice_docker_build
 #   # tags:
 #   # - Runner1
 

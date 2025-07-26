@@ -48,32 +48,32 @@ cartservice_build:
   # tags:
   # - Runner1
   
-# cartservice_test:
-#   extends: .dotnet_Test_template
-#   stage: test
+cartservice_test:
+  extends: .dotnet_Test_template
+  stage: test
 #   # tags:
 #   # - Runner1
 
-# cartservice_trivy_file_scan:
-#   extends: .trivy-filescan
-#   stage: security_stage
+cartservice_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
 #   # tags:
 #   #  - Runner1
 
-# cartservice_sonar_scan:
-#   extends: .sonarqube-check-template
-#   stage: security_stage
-#   dependencies:
-#     - cartservice_build
+cartservice_sonar_scan:
+  extends: .sonarqube-check-template
+  stage: security_stage
+  dependencies:
+    - cartservice_build
 #   # tags:
 #   #   - Runner1
 
-cartservice_test:
-  stage: test
-  dependencies:
-    - cartservice_build
-  script:
-    - ls -la cartservice_build
+# cartservice_artifact_test:
+#   stage: test
+#   dependencies:
+#     - cartservice_build
+#   script:
+#     - ls -la cartservice_build
 
 
 cartservice_docker_build:
@@ -84,11 +84,11 @@ cartservice_docker_build:
   tags:
     - shellrunner
 
-# cartservice_trivy_image_scan:
-#   extends: .trivy-imagescan
-#   stage: image_security
-#   dependencies:
-#     - cartservice_docker_build
+cartservice_trivy_image_scan:
+  extends: .trivy-imagescan
+  stage: image_security
+  dependencies:
+    - cartservice_docker_build
 #   # tags:
 #   # - Runner1
 
