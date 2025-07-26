@@ -45,9 +45,9 @@ before_script:
   - echo "Running before script for adservice"
   - cd src/adservice/
 
-# adservice_build:
-#   extends: .build_gradle-template
-#   stage: build
+adservice_build:
+  extends: .build_gradle-template
+  stage: build
   # tags:
   # - Runner1
   
@@ -66,8 +66,8 @@ before_script:
 adservice_sonar_scan:
   extends: .sonarqube-check-template
   stage: security_stage
-  # dependencies:
-  #   - adservice_build
+  dependencies:
+    - adservice_build
 #   # tags:
 #   #   - Runner1
 
