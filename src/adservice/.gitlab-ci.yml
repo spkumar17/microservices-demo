@@ -66,8 +66,8 @@ before_script:
 adservice_sonar_scan:
   extends: .sonarqube-check-template
   stage: security_stage
-  dependencies:
-    - adservice_build
+  # dependencies:
+  #   - adservice_build
 #   # tags:
 #   #   - Runner1
 
