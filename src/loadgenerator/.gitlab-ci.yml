@@ -52,25 +52,25 @@ loadgenerator_build:
   # tags:
 #   #   - Runner1
 
-# loadgenerator_test:
-#   extends: .Test_python_template
-#   stage: test
-#   # tags:
-#   #   - Runner1
+loadgenerator_test:
+  extends: .Test_python_template
+  stage: test
+  # tags:
+  #   - Runner1
 
-# loadgenerator_trivy_file_scan:
-#   extends: .trivy-filescan
-#   stage: security_stage
-#   # tags:
-#   #  - Runner1
+loadgenerator_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
+  # tags:
+  #  - Runner1
 
-# loadgenerator_sonar_scan:
-#   extends: .sonarqube-check-template
-#   stage: security_stage
-#   dependencies:
-#     - loadgenerator_build
-#   # tags:
-#   #   - Runner1
+loadgenerator_sonar_scan:
+  extends: .sonarqube-check-template
+  stage: security_stage
+  dependencies:
+    - loadgenerator_build
+  # tags:
+  #   - Runner1
 
 
 loadgenerator_docker_build:
