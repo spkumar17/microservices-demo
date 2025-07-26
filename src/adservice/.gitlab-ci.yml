@@ -45,9 +45,9 @@ before_script:
   - echo "Running before script for adservice"
   - cd src/adservice/
 
-adservice_build:
-  extends: .build_gradle-template
-  stage: build
+# adservice_build:
+#   extends: .build_gradle-template
+#   stage: build
   # tags:
   # - Runner1
   
