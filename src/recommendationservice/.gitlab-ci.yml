@@ -95,4 +95,4 @@ recommendationservice_docker_push:
   dependencies:
     - recommendationservice_docker_build
   tags:
-    - shellrunner    
+    - shellrunner 

@@ -89,4 +89,4 @@ shoppingassistantservice_docker_push:
   dependencies:
     - shoppingassistantservice_docker_build
   tags:
-    - shellrunner    
+    - shellrunner  

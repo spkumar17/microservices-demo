@@ -88,4 +88,3 @@ paymentservice_docker_push:
     - paymentservice_docker_build
   tags:
     - shellrunner    
-            

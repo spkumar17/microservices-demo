@@ -95,4 +95,4 @@ loadgenerator_docker_push:
   dependencies:
     - loadgenerator_docker_build
   tags:
-    - shellrunner    
+    - shellrunner

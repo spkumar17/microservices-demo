@@ -74,7 +74,6 @@ checkoutservice_sonar_scan:
 #   script:
 #     - ls -la checkoutservice_build
 
-
 checkoutservice_docker_build:
   extends: .docker_build_template
   stage: Docker_Build

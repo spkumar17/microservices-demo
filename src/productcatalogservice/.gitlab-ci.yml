@@ -89,4 +89,4 @@ productcatalogservice_docker_push:
   dependencies:
     - productcatalogservice_docker_build
   tags:
-    - shellrunner      
+    - shellrunner 

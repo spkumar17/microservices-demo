@@ -88,4 +88,4 @@ shippingservice_docker_push:
   dependencies:
     - shippingservice_docker_build
   tags:
-    - shellrunner
+    - shellrunner 

@@ -94,4 +94,4 @@ currencyservice_docker_push:
   dependencies:
     - currencyservice_docker_build
   tags:
-    - shellrunner    
+    - shellrunner

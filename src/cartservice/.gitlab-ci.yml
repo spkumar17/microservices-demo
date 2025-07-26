@@ -35,7 +35,6 @@ variables:
   dotnet_Dir: "$CI_PROJECT_DIR/src/cartservice/"
   SERVICE_NAME: "cartservice"
   
-  
 
 before_script:
   - echo "Running before script for cartservice"
