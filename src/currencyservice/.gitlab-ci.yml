@@ -21,7 +21,6 @@ include:
     file: 'Nodejs-test-template.yml'
     ref: 'main'
 
-
 stages:
   - build
   - test
@@ -96,4 +95,3 @@ currencyservice_docker_push:
     - currencyservice_docker_build
   tags:
     - shellrunner    
-            

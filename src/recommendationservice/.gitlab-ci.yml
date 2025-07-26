@@ -96,4 +96,3 @@ recommendationservice_docker_push:
     - recommendationservice_docker_build
   tags:
     - shellrunner    
-      

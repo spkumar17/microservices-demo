@@ -88,5 +88,3 @@ emailservice_docker_push:
     - emailservice_docker_build
   tags:
     - shellrunner    
-      
-

@@ -90,4 +90,3 @@ shoppingassistantservice_docker_push:
     - shoppingassistantservice_docker_build
   tags:
     - shellrunner    
-      

@@ -45,23 +45,23 @@ paymentservice_build:
   # tags:
   #   - Runner1
 
-# paymentservice_test:
-#   extends: .nodejs_test_template
-#   stage: test
+paymentservice_test:
+  extends: .nodejs_test_template
+  stage: test
 #   # tags:
 #   #   - Runner1
 
-# paymentservice_trivy_file_scan:
-#   extends: .trivy-filescan
-#   stage: security_stage
+paymentservice_trivy_file_scan:
+  extends: .trivy-filescan
+  stage: security_stage
 #   # tags:
 #   #  - Runner1
 
-# paymentservice_sonar_scan:
-#   extends: .sonarqube-check-template
-#   stage: security_stage
-#   dependencies:
-#     - paymentservice_build
+paymentservice_sonar_scan:
+  extends: .sonarqube-check-template
+  stage: security_stage
+  dependencies:
+    - paymentservice_build
 #   # tags:
 #   #   - Runner1
 

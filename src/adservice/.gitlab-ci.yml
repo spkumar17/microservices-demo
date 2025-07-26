@@ -81,7 +81,6 @@ adservice_sonar_scan:
 #     - ls 
 #     - cat build/install/hipstershop/bin/AdService
 
-
 adservice_docker_build:
   extends: .docker_build_template
   stage: Docker_Build

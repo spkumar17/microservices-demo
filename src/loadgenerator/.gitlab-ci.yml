@@ -96,4 +96,3 @@ loadgenerator_docker_push:
     - loadgenerator_docker_build
   tags:
     - shellrunner    
-      

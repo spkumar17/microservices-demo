@@ -75,7 +75,6 @@ cartservice_sonar_scan:
 #   script:
 #     - ls -la cartservice_build
 
-
 cartservice_docker_build:
   extends: .docker_build_template
   stage: Docker_Build
