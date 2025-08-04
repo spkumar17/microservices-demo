@@ -24,3 +24,11 @@ static IHostBuilder CreateHostBuilder(string[] args) =>
         {
             webBuilder.UseStartup<Startup>();
         });
+
+webBuilder.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(7070, listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http2;
+    });
+});        
