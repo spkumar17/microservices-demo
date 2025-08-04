@@ -1,0 +1,129 @@
+version: '3.9'
+
+networks:
+  butice-net:
+    driver: bridge
+
+services:
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - butice-net
+
+  adservice:
+    image: prasannakumarsinganamalla431/adservice:latest
+    ports:
+      - "9555:9555"
+    networks:
+      - butice-net
+
+  cartservice:
+    image: prasannakumarsinganamalla431/cartservice:latest
+    environment:
+      - REDIS_ADDR=redis:6379
+    depends_on:
+      - redis
+    ports:
+      - "7070:7070"
+    networks:
+      - butice-net
+
+  shippingservice:
+    image: prasannakumarsinganamalla431/shippingservice:latest
+    ports:
+      - "50051:50051"
+    networks:
+      - butice-net
+
+  productcatalogservice:
+    image: prasannakumarsinganamalla431/productcatalogservice:latest
+    ports:
+      - "3550:3550"
+    networks:
+      - butice-net
+
+  paymentservice:
+    image: prasannakumarsinganamalla431/paymentservice:latest
+    environment:
+      - PORT=50051
+      - DISABLE_PROFILER=true
+    ports:
+      - "50052:50051"  # Avoid port conflict with shipping
+    networks:
+      - butice-net
+
+  currencyservice:
+    image: prasannakumarsinganamalla431/currencyservice:latest
+    environment:
+      - PORT=7000
+      - DISABLE_PROFILER=true
+    ports:
+      - "7000:7000"
+    networks:
+      - butice-net
+
+  emailservice:
+    image: prasannakumarsinganamalla431/emailservice:latest
+    ports:
+      - "8081:8080"
+    networks:
+      - butice-net
+
+  recommendationservice:
+    image: prasannakumarsinganamalla431/recommendationservice:latest
+    depends_on:
+      - productcatalogservice
+    environment:
+      - PRODUCT_CATALOG_SERVICE_ADDR=productcatalogservice:3550
+    ports:
+      - "8082:8080"
+    networks:
+      - butice-net
+
+  checkoutservice:
+    image: prasannakumarsinganamalla431/checkoutservice:latest
+    depends_on:
+      - shippingservice
+      - cartservice
+      - currencyservice
+      - productcatalogservice
+      - emailservice
+      - paymentservice
+    environment:
+      - PAYMENT_SERVICE_ADDR=paymentservice:50051
+      - EMAIL_SERVICE_ADDR=emailservice:5000
+      - CURRENCY_SERVICE_ADDR=currencyservice:7000
+      - SHIPPING_SERVICE_ADDR=shippingservice:50051
+      - CART_SERVICE_ADDR=cartservice:7070
+      - PRODUCT_CATALOG_SERVICE_ADDR=productcatalogservice:3550
+    ports:
+      - "5050:5050"
+    networks:
+      - butice-net
+
+  frontend:
+    image: prasannakumarsinganamalla431/frontend:latest
+    depends_on:
+      - productcatalogservice
+      - currencyservice
+      - cartservice
+      - recommendationservice
+      - checkoutservice
+      - shippingservice
+      - adservice
+    ports:
+      - "8080:8080"
+    environment:
+      - SHOPPING_ASSISTANT_SERVICE_ADDR=shoppingassistantservice:8080
+      - PRODUCT_CATALOG_SERVICE_ADDR=productcatalogservice:3550
+      - CURRENCY_SERVICE_ADDR=currencyservice:7000
+      - CART_SERVICE_ADDR=cartservice:7070
+      - RECOMMENDATION_SERVICE_ADDR=recommendationservice:8080
+      - CHECKOUT_SERVICE_ADDR=checkoutservice:5050
+      - SHIPPING_SERVICE_ADDR=shippingservice:50051
+      - AD_SERVICE_ADDR=adservice:9555
+    networks:
+      - butice-net
