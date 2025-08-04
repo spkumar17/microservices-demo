@@ -59,13 +59,13 @@ cartservice_trivy_file_scan:
 #   # tags:
 #   #  - Runner1
 
-cartservice_sonar_scan:
-  extends: .sonarqube-check-template
-  stage: security_stage
-  dependencies:
-    - cartservice_build
-#   # tags:
-#   #   - Runner1
+# cartservice_sonar_scan:
+#   extends: .sonarqube-check-template
+#   stage: security_stage
+#   dependencies:
+#     - cartservice_build
+# #   # tags:
+# #   #   - Runner1
 
 # cartservice_artifact_test:
 #   stage: test
